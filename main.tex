@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper,twoside,openright,notitlepage]{report}  
+\usepackage[bahasa]{babel}      % bahasa indonesia
+% \usepackage{lmodern}            %font latin modern
+\usepackage{times}              % Menggunakan Times New Roman untuk teks biasa
+\usepackage{mathptmx}           % Menggunakan Times New Roman untuk rumus matematika
+\usepackage[T1]{fontenc}        % encoding
+\usepackage[inner=2.5cm,outer=2cm,top=2.5cm,bottom=2.5cm]{geometry} % margin
+\usepackage{microtype}          % mencegah underfull
+\usepackage{lipsum}             % dummy text
+\usepackage{abstract}           % manipulasi abstract
+\usepackage{tocloft}            % format daftar isi 
+\usepackage{tocbibind}          % menambah kata pengantar, daftar isi, gambar, tabel ke daftasr isi
+\usepackage{fancyhdr}           % mengubah tampilan header & footer
+\usepackage{titlesec}           % mengubah tamnpilan judul bab
+\usepackage{float}              % penempatan gambar di tempat yg seharusnya 
+\usepackage{setspace}           % line spacing
+\usepackage[plainpages=false,pdfpagelabels,unicode]{hyperref}% \autoref,\phantomsection & link 
+\usepackage[pagewise]{lineno}   % line numbering
+\usepackage{emptypage}          % halaman kosong antar bab
+\usepackage{graphicx}           % graphicspath
+\usepackage{listings}           % penulisan source code
+\usepackage{etoolbox}           % programming dll
+\usepackage{xstring}            % manipulasi string, strchar, ifstreq
+\usepackage[table]{xcolor}      % untuk kode program
+\usepackage{pgffor}             % foreach
+%\usepackage{.sty/digsig}        % keaslian dokumen
+\usepackage{nomencl}            % daftar simbol
+
+\title{Template Laporan Skripsi JTD Polinema}
+\author{ahmadwildan }
+\date{June 2023}
+
+\begin{document}
+
+\edef\vbab{1,2,3,4,5,6,7,8,9}
+\newcommand{\dtext}[1]{{\color{lightgray} \lipsum[#1]}} % dummy text
+
+\maketitle
+
+% Bab Utama 
+\foreach \i in \vbab { \edef\vfile{Bab/bab\i} \IfFileExists{\vfile}{\include{\vfile}}} 
+
+% Referensi
+\renewcommand{\bibname}{Daftar Pustaka}
+\singlespacing% single spacing untuk lampiran dan daftar referensi
+\nolinenumbers% tidak ada line number untuk lampiran dan daftar referensi
+\bibliographystyle{.sty/compj} %gunakan compj 
+\bibliography{referensi}
+\end{document}
